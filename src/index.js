@@ -1,9 +1,9 @@
 import "./css/main.css";
 import { servicesList } from "./js/various_things/services_list";
-import { HDD, SINGLE, SSD } from "./js/various_things/word_constants";
+import { HDD, MULTI, SINGLE, SSD } from "./js/various_things/word_constants";
 
-let storageSize = 100;
-let transferSize = 100;
+let storageSize = 1000;
+let transferSize = 1000;
 
 const servicesStateList = servicesList.map((service) => {
     const serviceState = {
@@ -20,16 +20,16 @@ const servicesStateList = servicesList.map((service) => {
     return serviceState;
 });
 
-console.log(servicesStateList);
 
 function calculatePricing(){
     const pricing = servicesStateList.map((serviceState) => {
         let resultingStorageSize = storageSize;
         let resultingTransferSize = transferSize;
         let storagePrice = 0;
-        let transferPrice = transferPrice = serviceState.service.pricing.transfer * transferSize; //Currently there is only one transfer option
+        let transferPrice = 0;
         let totalPrice = 0;
         const discounts = serviceState.service.discounts;
+        const limits = serviceState.service.limits;
 
         if(discounts){ //There are some discounts present
             if(discounts.storage && discounts.storage.gigabytesForFree){
@@ -43,31 +43,42 @@ function calculatePricing(){
             }
         }
 
+        //Storage price calculation
         if(serviceState.storageType){
             switch(serviceState.storageType){
                 case HDD: {
-                    storagePrice = storageSize * serviceState.service.pricing.storage.hdd;
+                    storagePrice = resultingStorageSize * serviceState.service.pricing.storage.hdd;
                     break;
                 }
                 case SSD: {
-                    storagePrice = storageSize * serviceState.service.pricing.storage.ssd;
+                    storagePrice = resultingStorageSize * serviceState.service.pricing.storage.ssd;
                     break;
                 }
                 case SINGLE: {
-                    storagePrice = storageSize * serviceState.service.pricing.storage.single;
+                    storagePrice = resultingStorageSize * serviceState.service.pricing.storage.single;
                     break;
                 }
                 case MULTI: {
-                    storagePrice = storageSize * serviceState.service.pricing.storage.multi;
+                    storagePrice = resultingStorageSize * serviceState.service.pricing.storage.multi;
                     break;
                 }
             }
         }
         else{
-            storagePrice = storageSize * serviceState.service.pricing.storage;
+            storagePrice = resultingStorageSize * serviceState.service.pricing.storage;
         }
 
-        console.log(serviceState.service.name, resultingStorageSize, resultingTransferSize, storagePrice, transferPrice);
+        transferPrice = serviceState.service.pricing.transfer * resultingTransferSize; //Currently there is only one transfer option
+
+        totalPrice = storagePrice + transferPrice;
+
+        //Price bound
+        if(limits){
+            if(limits.minPay && totalPrice < limits.minPay) totalPrice = limits.minPay;
+            if(limits.maxPay && totalPrice > limits.maxPay) totalPrice = limits.maxPay;
+        }
+
+        console.log(serviceState.service.name, "total:", totalPrice);
     });
 }
 

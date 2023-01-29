@@ -3,11 +3,11 @@ export const servicesList = [
         name: "backbaze.com",
         pricing: {
             storage: 0.005,
-            transfer: 0.001
+            transfer: 0.01
         },
         limits: {
             minPay: 7,
-            maxPay: Infinity
+            maxPay: null
         },
         hddOrSsdOption: false,
         singleOMultiOption: false,
@@ -24,7 +24,7 @@ export const servicesList = [
             transfer: 0.01
         },
         limits: {
-            minPay: 0,
+            minPay: null,
             maxPay: 10
         },
         hddOrSsdOption: true,
@@ -62,7 +62,7 @@ export const servicesList = [
         },
         limits: {
             minPay: 5,
-            maxPay: Infinity
+            maxPay: null
         },
         hddOrSsdOption: false,
         singleOMultiOption: false,
