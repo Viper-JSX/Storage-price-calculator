@@ -5,13 +5,15 @@ import { HDD, MULTI, SINGLE, SSD } from "./js/various_things/word_constants";
 
 const storageSizeInput = document.getElementById("storageSizeInput");
 const transferSizeInput = document.getElementById("transferSizeInput");
+const storageSizeCount = document.getElementById("storageSizeCount");
+const transferSizeCount = document.getElementById("transferSizeCount");
 
 const chartServices = document.getElementById("chartServices");
 const chartColumns = document.getElementById("chartColumns");
 
 
-let storageSize = 1000;
-let transferSize = 1000;
+let storageSize = 50;
+let transferSize = 50;
 
 const servicesStateList = servicesList.map((service) => {
     const serviceState = {
@@ -27,6 +29,11 @@ const servicesStateList = servicesList.map((service) => {
 
     return serviceState;
 });
+
+storageSizeInput.value = storageSize;
+transferSizeInput.value = transferSize;
+storageSizeCount.textContent = storageSize;
+transferSizeCount.textContent = transferSize;
 
 storageSizeInput.addEventListener("change", hanbdleStorageSizeChange);
 transferSizeInput.addEventListener("change", hanbdleTransferSizeChange);
@@ -90,7 +97,7 @@ function renderChartColumns(){
 
         chartItem.innerHTML = `
             <div class="chartColumn ${minPricing.name === item.name ? 'minPrice' : '' }" style="--size: ${item.columnSize};"></div>
-            <b>${item.totalPrice}$</b>
+            <b>${item.totalPrice.toFixed(2)}$</b>
         `;
 
         chartColumns.append(chartItem);
@@ -101,14 +108,13 @@ renderChartServices();
 
 function hanbdleStorageSizeChange(event){
     storageSize = parseInt(event.target.value);
-    const pricing = calculatePricing(servicesStateList, storageSize, transferSize);
+    storageSizeCount.textContent = storageSize;
     renderChartColumns();
 }
 
 function hanbdleTransferSizeChange(event){
     transferSize = parseInt(event.target.value);
-    const pricing = calculatePricing(servicesStateList, storageSize, transferSize);
-
+    transferSizeCount.textContent = transferSize;
     renderChartColumns();
 }
 
