@@ -3,6 +3,9 @@ import { calculatePricing } from "./js/utilities/calculatePricing";
 import { servicesList } from "./js/various_things/services_list";
 import { HDD, MULTI, SINGLE, SSD } from "./js/various_things/word_constants";
 
+const storageSizeInput = document.getElementById("storageSizeInput");
+const transferSizeInput = document.getElementById("transferSizeInput");
+
 let storageSize = 1000;
 let transferSize = 1000;
 
@@ -21,6 +24,19 @@ const servicesStateList = servicesList.map((service) => {
     return serviceState;
 });
 
+storageSizeInput.addEventListener("change", hanbdleStorageSizeChange);
+transferSizeInput.addEventListener("change", hanbdleTransferSizeChange);
 
-console.log(calculatePricing(servicesStateList, storageSize, transferSize));
+
+
+function hanbdleStorageSizeChange(event){
+    storageSize = parseInt(event.target.value);
+    const pricing = calculatePricing(servicesStateList, storageSize, transferSize);
+}
+
+function hanbdleTransferSizeChange(event){
+    transferSize = parseInt(event.target.value);
+    const pricing = calculatePricing(servicesStateList, storageSize, transferSize);
+}
+
 
