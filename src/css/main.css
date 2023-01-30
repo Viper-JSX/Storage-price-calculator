@@ -1,0 +1,33 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+
+.app{
+
+}
+
+#storageSizeInput, #transferSizeInput{
+    position: relative;
+    background-color: red;
+}
+
+#storageSizeInput::before, #transferSizeInput::before{
+    content: "0";
+    position: absolute;
+    bottom: 0;
+    transform: translateY(100%);
+}
+
+#storageSizeInput::after, #transferSizeInput::after{
+    content: "1000";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: translateY(100%);
+}
