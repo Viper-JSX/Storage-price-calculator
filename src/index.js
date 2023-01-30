@@ -33,6 +33,55 @@ transferSizeInput.addEventListener("change", hanbdleTransferSizeChange);
 
 
 
+
+
+
+
+
+
+function renderChartServices(){
+    servicesList.forEach((service, index) => {
+        const serviceItem = document.createElement("div");
+        serviceItem.innerHTML = `
+            <b>${service.name}</b>
+        `;
+
+        if(service.hddOrSsdOption || service.singleOMultiOption){
+            const avaliableOptions = Object.keys(service.pricing.storage);
+            const serviceStorageOptions = document.createElement("fieldset");
+            serviceStorageOptions.name = `storageOptions_${index}`;
+
+
+            avaliableOptions.forEach((option) => {  
+                const serviceStorageOption = document.createElement("input");
+                const serviceStorageOptionLabel = document.createElement("label");
+                serviceStorageOptionLabel.textContent = option;
+
+                serviceStorageOption.type = "radio";
+                serviceStorageOption.name = `storageOptions_${index}`;
+                serviceStorageOption.value = option;
+                serviceStorageOptions.append(serviceStorageOptionLabel, serviceStorageOption);
+            })
+
+            serviceItem.append(serviceStorageOptions);
+        }
+
+        if(service.singleOMultiOption){
+
+        }
+
+
+        chartServices.append(serviceItem)
+    });
+}
+
+renderChartServices();
+
+function renderChartColumns(){
+
+}
+
+
 function hanbdleStorageSizeChange(event){
     storageSize = parseInt(event.target.value);
     const pricing = calculatePricing(servicesStateList, storageSize, transferSize);
