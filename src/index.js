@@ -38,7 +38,8 @@ transferSizeCount.textContent = transferSize;
 storageSizeInput.addEventListener("change", hanbdleStorageSizeChange);
 transferSizeInput.addEventListener("change", hanbdleTransferSizeChange);
 
-
+renderChartColumns();
+renderChartServices();
 
 
 
@@ -47,15 +48,15 @@ transferSizeInput.addEventListener("change", hanbdleTransferSizeChange);
 
 
 function renderChartServices(){
-    servicesList.forEach((service, index) => {
+    servicesStateList.forEach((serviceState, index) => {
         const serviceItem = document.createElement("div");
-        serviceItem.addEventListener("change", (event) => handleStorageOptionChange({ event, serviceName: service.name }));
+        serviceItem.addEventListener("change", (event) => handleStorageOptionChange({ event, serviceName: serviceState.service.name }));
         serviceItem.innerHTML = `
-            <b>${service.name}</b>
+            <b>${serviceState.service.name}</b>
         `;
 
-        if(service.hddOrSsdOption || service.singleOMultiOption){
-            const avaliableOptions = Object.keys(service.pricing.storage);
+        if(serviceState.service.hddOrSsdOption || serviceState.service.singleOMultiOption){ //storage options
+            const avaliableOptions = Object.keys(serviceState.service.pricing.storage);
             const serviceStorageOptions = document.createElement("fieldset");
             serviceStorageOptions.name = `storageOptions_${index}`;
 
@@ -68,6 +69,11 @@ function renderChartServices(){
                 serviceStorageOption.type = "radio";
                 serviceStorageOption.name = `storageOptions_${index}`;
                 serviceStorageOption.value = option;
+
+                if(serviceState.storageType === option){ //if option is selcted by default
+                    serviceStorageOption.checked = true;
+                }
+
                 serviceStorageOptions.append(serviceStorageOptionLabel, serviceStorageOption);
             })
 
@@ -77,6 +83,7 @@ function renderChartServices(){
         chartServices.append(serviceItem)
     });
 }
+
 
 function renderChartColumns(){
     const servicesPricing = calculatePricing(servicesStateList, storageSize, transferSize);
@@ -103,8 +110,6 @@ function renderChartColumns(){
         chartColumns.append(chartItem);
     })
 }
-
-renderChartServices();
 
 function hanbdleStorageSizeChange(event){
     storageSize = parseInt(event.target.value);
