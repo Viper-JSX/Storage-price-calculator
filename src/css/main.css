@@ -48,6 +48,11 @@ body{
 #chartColumns{
     width: 60%;
     border-left: 0.5rem solid black;
+    background-color: blue;
+}
+
+.chartItem{
+    display: flex;
 }
 
 .chartColumn{
@@ -76,6 +81,6 @@ body{
     }
 
     100%{
-        width: calc(100% * var(--size));
+        width: calc(100% * 0.8 * var(--size)); /*chart take only 8/10 of the width of container, the rest of space is for the price*/
     }
 }

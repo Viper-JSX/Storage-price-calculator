@@ -82,20 +82,18 @@ function renderChartColumns(){
     const [ minPricing, maxPricing ] = [ servicesPricingSortedAsc[0], servicesPricingSortedAsc[servicesPricingSortedAsc.length - 1]];
     const servicesPricingAndColumnsSize = servicesPricing.map((item) => ( { ...item, columnSize: item.totalPrice / maxPricing.totalPrice }));
 
-    console.log(minPricing, maxPricing, servicesPricingAndColumnsSize);
-
     chartColumns.textContent = "";
 
-
     servicesPricingAndColumnsSize.forEach((item) => {
-        const pricingItem = document.createElement("div");
-        console.log(item.columnSize)
-        pricingItem.innerHTML = `
+        const chartItem = document.createElement("div");
+        chartItem.classList.add("chartItem");
+
+        chartItem.innerHTML = `
             <div class="chartColumn ${minPricing.name === item.name ? 'minPrice' : '' }" style="--size: ${item.columnSize};"></div>
             <b>${item.totalPrice}$</b>
         `;
 
-        chartColumns.append(pricingItem);
+        chartColumns.append(chartItem);
     })
 }
 
