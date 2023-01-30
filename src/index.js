@@ -67,11 +67,6 @@ function renderChartServices(){
             serviceItem.append(serviceStorageOptions);
         }
 
-        if(service.singleOMultiOption){
-
-        }
-
-
         chartServices.append(serviceItem)
     });
 }
@@ -86,11 +81,15 @@ function renderChartColumns(){
 function hanbdleStorageSizeChange(event){
     storageSize = parseInt(event.target.value);
     const pricing = calculatePricing(servicesStateList, storageSize, transferSize);
+
+    console.log(pricing);
 }
 
 function hanbdleTransferSizeChange(event){
     transferSize = parseInt(event.target.value);
     const pricing = calculatePricing(servicesStateList, storageSize, transferSize);
+
+    console.log(pricing);
 }
 
 function handleStorageOptionChange({ event, serviceName }){
