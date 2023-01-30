@@ -64,8 +64,10 @@ function renderChartServices(){
             avaliableOptions.forEach((option) => {  
                 const serviceStorageOption = document.createElement("input");
                 const serviceStorageOptionLabel = document.createElement("label");
-                serviceStorageOptionLabel.textContent = option;
+                const serviceStorageOptionId = serviceState.service.name + option;
 
+                
+                serviceStorageOption.id = serviceStorageOptionId;
                 serviceStorageOption.type = "radio";
                 serviceStorageOption.name = `storageOptions_${index}`;
                 serviceStorageOption.value = option;
@@ -73,6 +75,9 @@ function renderChartServices(){
                 if(serviceState.storageType === option){ //if option is selcted by default
                     serviceStorageOption.checked = true;
                 }
+
+                serviceStorageOptionLabel.textContent = option;
+                serviceStorageOptionLabel.htmlFor = serviceStorageOptionId;
 
                 serviceStorageOptions.append(serviceStorageOptionLabel, serviceStorageOption);
             })
