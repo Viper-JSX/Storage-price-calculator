@@ -45,6 +45,18 @@ body{
     justify-content: space-between;
 }
 
+.serviceItem{
+    margin: 0.5rem;
+    background-color: red;
+}
+
+.serviceItem fieldset{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
 #chartColumns{
     width: 60%;
     border-left: 0.5rem solid black;

@@ -50,6 +50,7 @@ renderChartServices();
 function renderChartServices(){
     servicesStateList.forEach((serviceState, index) => {
         const serviceItem = document.createElement("div");
+        serviceItem.classList.add("serviceItem");
         serviceItem.addEventListener("change", (event) => handleStorageOptionChange({ event, serviceName: serviceState.service.name }));
         serviceItem.innerHTML = `
             <b>${serviceState.service.name}</b>
@@ -65,7 +66,7 @@ function renderChartServices(){
                 const serviceStorageOption = document.createElement("input");
                 const serviceStorageOptionLabel = document.createElement("label");
                 const serviceStorageOptionId = serviceState.service.name + option;
-
+                const radioButtonAndLabelWrapper = document.createElement("div");
                 
                 serviceStorageOption.id = serviceStorageOptionId;
                 serviceStorageOption.type = "radio";
@@ -79,7 +80,10 @@ function renderChartServices(){
                 serviceStorageOptionLabel.textContent = option;
                 serviceStorageOptionLabel.htmlFor = serviceStorageOptionId;
 
-                serviceStorageOptions.append(serviceStorageOptionLabel, serviceStorageOption);
+                radioButtonAndLabelWrapper.classList.add("radioButtonAndLabelWrapper");
+                radioButtonAndLabelWrapper.append(serviceStorageOptionLabel, serviceStorageOption)
+
+                serviceStorageOptions.append(radioButtonAndLabelWrapper);
             })
 
             serviceItem.append(serviceStorageOptions);
