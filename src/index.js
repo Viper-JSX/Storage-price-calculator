@@ -6,6 +6,10 @@ import { HDD, MULTI, SINGLE, SSD } from "./js/various_things/word_constants";
 const storageSizeInput = document.getElementById("storageSizeInput");
 const transferSizeInput = document.getElementById("transferSizeInput");
 
+const chartServices = document.getElementById("chartServices");
+const chartColumns = document.getElementById("chartColumns");
+
+
 let storageSize = 1000;
 let transferSize = 1000;
 
