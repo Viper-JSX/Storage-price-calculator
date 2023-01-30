@@ -93,5 +93,8 @@ function hanbdleTransferSizeChange(event){
 }
 
 function handleStorageOptionChange({ event, serviceName }){
-    console.log(serviceName, event.target.value);
+    servicesStateList.find((servicesState) => servicesState.service.name === serviceName).storageType = event.target.value;
+    console.log(servicesStateList);
+
+    const pricing = calculatePricing(servicesStateList, storageSize, transferSize);
 }
