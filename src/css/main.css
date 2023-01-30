@@ -22,6 +22,16 @@ body{
     flex-direction: column;
 }
 
+.form{
+    display: flex;
+}
+
+.form > div{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
 #storageSizeInput, #transferSizeInput{
     position: relative;
     background-color: red;
@@ -108,14 +118,7 @@ body{
 
 
 @media screen and (max-width: 400px) {
-    .App{
-        flex-direction: column-reverse;
-    }
 
-    #chartServices{
-        min-width: 320px;
-        flex-direction: row;
-    } 
 }
 
 
