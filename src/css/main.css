@@ -51,9 +51,13 @@ body{
 }
 
 .chartColumn{
-    width: calc(100% * var(--size));
     height: 20px;
     background-color: red;
+    animation-name: columnResize;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
 }
 
 .chartColumn.minPrice{
@@ -62,4 +66,16 @@ body{
 
 .chartColumn::before{
     content: "GG";
+}
+
+
+
+@keyframes columnResize{
+    0%{
+        width: 0%;
+    }
+
+    100%{
+        width: calc(100% * var(--size));
+    }
 }
