@@ -42,6 +42,7 @@ transferSizeInput.addEventListener("change", hanbdleTransferSizeChange);
 function renderChartServices(){
     servicesList.forEach((service, index) => {
         const serviceItem = document.createElement("div");
+        serviceItem.addEventListener("change", (event) => handleStorageOptionChange({ event, serviceName: service.name }));
         serviceItem.innerHTML = `
             <b>${service.name}</b>
         `;
@@ -92,4 +93,6 @@ function hanbdleTransferSizeChange(event){
     const pricing = calculatePricing(servicesStateList, storageSize, transferSize);
 }
 
-
+function handleStorageOptionChange({ event, serviceName }){
+    console.log(serviceName, event.target.value);
+}
