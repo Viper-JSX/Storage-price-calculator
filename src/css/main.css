@@ -46,6 +46,20 @@ body{
 }
 
 #chartColumns{
+    width: 60%;
     border-left: 0.5rem solid black;
 }
 
+.chartColumn{
+    width: calc(100% * var(--size));
+    height: 20px;
+    background-color: red;
+}
+
+.chartColumn.minPrice{
+    background-color: black;
+}
+
+.chartColumn::before{
+    content: "GG";
+}

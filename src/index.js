@@ -73,13 +73,26 @@ function renderChartServices(){
 
 function renderChartColumns(){
     const servicesPricing = calculatePricing(servicesStateList, storageSize, transferSize);
+    if(servicesPricing.length <= 1){ //if there is only one or no services
+        return;
+    }
+
+
+    const servicesPricingSortedAsc = [...servicesPricing].sort((a, b) => a.totalPrice - b.totalPrice);
+    const [ minPricing, maxPricing ] = [ servicesPricingSortedAsc[0], servicesPricingSortedAsc[servicesPricingSortedAsc.length - 1]];
+    const servicesPricingAndColumnsSize = servicesPricing.map((item) => ( { ...item, columnSize: item.totalPrice / maxPricing.totalPrice }));
+
+    console.log(minPricing, maxPricing, servicesPricingAndColumnsSize);
+
     chartColumns.textContent = "";
 
-    servicesPricing.forEach((pricing) => {
+
+    servicesPricingAndColumnsSize.forEach((item) => {
         const pricingItem = document.createElement("div");
+        console.log(item.columnSize)
         pricingItem.innerHTML = `
-            <b>${pricing.name}</b>
-            <span>${pricing.totalPrice}</span>
+            <div class="chartColumn ${minPricing.name === item.name ? 'minPrice' : '' }" style="--size: ${item.columnSize};"></div>
+            <b>${item.totalPrice}$</b>
         `;
 
         chartColumns.append(pricingItem);
@@ -91,7 +104,6 @@ renderChartServices();
 function hanbdleStorageSizeChange(event){
     storageSize = parseInt(event.target.value);
     const pricing = calculatePricing(servicesStateList, storageSize, transferSize);
-    console.log(pricing);
     renderChartColumns();
 }
 
@@ -99,13 +111,11 @@ function hanbdleTransferSizeChange(event){
     transferSize = parseInt(event.target.value);
     const pricing = calculatePricing(servicesStateList, storageSize, transferSize);
 
-    console.log(pricing);
     renderChartColumns();
 }
 
 function handleStorageOptionChange({ event, serviceName }){
     servicesStateList.find((servicesState) => servicesState.service.name === serviceName).storageType = event.target.value;
-    console.log(servicesStateList);
     const pricing = calculatePricing(servicesStateList, storageSize, transferSize);
 
     renderChartColumns();
