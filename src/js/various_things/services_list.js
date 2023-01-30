@@ -1,3 +1,5 @@
+import { HDD, MULTI, SINGLE, SSD } from "./word_constants";
+
 export const servicesList = [
     {
         name: "backbaze.com",
@@ -18,8 +20,8 @@ export const servicesList = [
         name: "bunny.net",
         pricing: {
             storage: {
-                hdd: 0.01,
-                ssd: 0.02
+                [HDD]: 0.01,
+                [SSD]: 0.02
             },
             transfer: 0.01
         },
@@ -36,8 +38,8 @@ export const servicesList = [
         name: "scaleway.com",
         pricing: {
             storage: {
-                single: 0.03,
-                multi: 0.06
+                [SINGLE]: 0.03,
+                [MULTI]: 0.06
             },
             transfer: 0.02
         },

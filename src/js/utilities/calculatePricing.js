@@ -26,19 +26,19 @@ function calculatePricing(servicesStateList, storageSize, transferSize){
         if(serviceState.storageType){
             switch(serviceState.storageType){
                 case HDD: {
-                    storagePrice = resultingStorageSize * serviceState.service.pricing.storage.hdd;
+                    storagePrice = resultingStorageSize * serviceState.service.pricing.storage[HDD];
                     break;
                 }
                 case SSD: {
-                    storagePrice = resultingStorageSize * serviceState.service.pricing.storage.ssd;
+                    storagePrice = resultingStorageSize * serviceState.service.pricing.storage[SSD];
                     break;
                 }
                 case SINGLE: {
-                    storagePrice = resultingStorageSize * serviceState.service.pricing.storage.single;
+                    storagePrice = resultingStorageSize * serviceState.service.pricing.storage[SINGLE];
                     break;
                 }
                 case MULTI: {
-                    storagePrice = resultingStorageSize * serviceState.service.pricing.storage.multi;
+                    storagePrice = resultingStorageSize * serviceState.service.pricing.storage[MULTI];
                     break;
                 }
             }

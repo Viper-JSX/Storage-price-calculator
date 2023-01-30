@@ -18,10 +18,10 @@ const servicesStateList = servicesList.map((service) => {
         service: JSON.parse(JSON.stringify(service)) //To remove all object references
     };
 
-    if(service.pricing.storage.hdd){ // HDD or SSD
+    if(service.pricing.storage[HDD]){ // HDD or SSD
         serviceState.storageType = HDD; 
     }
-    else if(service.pricing.storage.multi){ // single or multi
+    else if(service.pricing.storage[SINGLE]){ // single or multi
         serviceState.storageType = SINGLE;
     }
 
