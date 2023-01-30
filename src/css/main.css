@@ -1,3 +1,12 @@
+:root{
+    --lightColor: #EEEEEE;
+    --darkColor: #111111;
+    --highlightColor: orangered;
+
+    --darkBorder: 2px solid black;
+    --lightBorder: 2px solid white;
+}
+
 *{
     box-sizing: border-box;
 }
@@ -8,8 +17,9 @@ body{
 }
 
 
-.app{
-
+.App{   
+    display: flex;
+    flex-direction: column;
 }
 
 #storageSizeInput, #transferSizeInput{
@@ -35,8 +45,11 @@ body{
 /*---Chart---*/
 
 .pricingChart{
+    width: 60vw;
+    min-width: 320px;
     margin-top: 3rem;
     display: flex;
+    flex-wrap: wrap-reverse;
 }
 
 #chartServices, #chartColumns{ 
@@ -47,18 +60,21 @@ body{
 
 .serviceItem{
     margin: 0.5rem;
-    background-color: red;
+    border-bottom: var(--darkBorder);
 }
 
 .serviceItem fieldset{
     margin: 0;
     padding: 0;
+    border: none;
     display: flex;
     justify-content: space-around;
 }
 
 #chartColumns{
     width: 60%;
+    min-width: 320px;
+    min-width: 3;
     border-left: 0.5rem solid black;
     background-color: blue;
 }
@@ -87,6 +103,24 @@ body{
 
 
 
+
+
+
+
+@media screen and (max-width: 400px) {
+    .App{
+        flex-direction: column-reverse;
+    }
+
+    #chartServices{
+        min-width: 320px;
+        flex-direction: row;
+    } 
+}
+
+
+
+
 @keyframes columnResize{
     0%{
         width: 0%;
@@ -96,3 +130,5 @@ body{
         width: calc(100% * 0.8 * var(--size)); /*chart take only 8/10 of the width of container, the rest of space is for the price*/
     }
 }
+
+
