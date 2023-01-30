@@ -71,18 +71,28 @@ function renderChartServices(){
     });
 }
 
-renderChartServices();
-
 function renderChartColumns(){
+    const servicesPricing = calculatePricing(servicesStateList, storageSize, transferSize);
+    chartColumns.textContent = "";
 
+    servicesPricing.forEach((pricing) => {
+        const pricingItem = document.createElement("div");
+        pricingItem.innerHTML = `
+            <b>${pricing.name}</b>
+            <span>${pricing.totalPrice}</span>
+        `;
+
+        chartColumns.append(pricingItem);
+    })
 }
 
+renderChartServices();
 
 function hanbdleStorageSizeChange(event){
     storageSize = parseInt(event.target.value);
     const pricing = calculatePricing(servicesStateList, storageSize, transferSize);
-
     console.log(pricing);
+    renderChartColumns();
 }
 
 function hanbdleTransferSizeChange(event){
@@ -90,11 +100,13 @@ function hanbdleTransferSizeChange(event){
     const pricing = calculatePricing(servicesStateList, storageSize, transferSize);
 
     console.log(pricing);
+    renderChartColumns();
 }
 
 function handleStorageOptionChange({ event, serviceName }){
     servicesStateList.find((servicesState) => servicesState.service.name === serviceName).storageType = event.target.value;
     console.log(servicesStateList);
-
     const pricing = calculatePricing(servicesStateList, storageSize, transferSize);
+
+    renderChartColumns();
 }

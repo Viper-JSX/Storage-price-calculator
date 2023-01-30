@@ -31,3 +31,21 @@ body{
     right: 0;
     transform: translateY(100%);
 }
+
+/*---Chart---*/
+
+.pricingChart{
+    margin-top: 3rem;
+    display: flex;
+}
+
+#chartServices, #chartColumns{ 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#chartColumns{
+    border-left: 0.5rem solid black;
+}
+
