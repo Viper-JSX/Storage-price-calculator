@@ -75,18 +75,18 @@ body{
 }
 
 .serviceItem{
-    margin: 0.5rem;
+    height: 100%;
     border-bottom: var(--darkBorder);
+    overflow: auto;
 }
 
 .serviceItem fieldset{
     margin: 0;
     padding: 0;
-    font-size: 0.7rem;
+    font-size: 0.6rem;
     border: none;
     display: flex;
     flex-wrap: wrap;
-    background-color: blue;
 }
 
 .serviceName{
@@ -102,12 +102,14 @@ body{
 }
 
 .chartItem{
+    height: 100%;
+    align-items: center;
     display: flex;
-    /* background-color: green; */
+    background-color: green; 
 }
 
 .chartColumn{
-    height: 20px;
+    height: 1.2rem;
     background-color: gray;
     border: var(--thinDarkBorder);
 
@@ -144,45 +146,38 @@ body{
     }
 
     #chartServices,  #chartColumns{
-        padding: 0px;
+        min-width: 320px;
         padding: 0 1rem 0 1rem;
+        justify-content: space-between;
+        flex-direction: row;
+    }
+
+    .serviceItem{
+        width: 100%;
+        height: auto;
+        margin: 0;
+        font-size: 0.8rem;
+        text-align: center;
     }
 
     #chartColumns{
         height: 60vh;
-        min-height: 320px;
         border-left: none;
         border-bottom: 1rem solid black;
-        flex-direction: row;
         align-items: flex-end;
     }
 
-    .serviceItem{
-        font-size: 0.8rem;
-    }
-
     .chartItem{
-        width: 2rem;
+        width: 100%;
         height: 100%;
         align-items: center;
         flex-direction: column-reverse;
     }
 
     .chartColumn{
-        width: 1rem !important;
+        width: 1rem !important; /*Overrite animation's value*/
         height: calc(100% * 0.8 * var(--size));
         animation-name: columnHeightResize;
-    }
-
-    #chartServices{
-        justify-content: space-between;
-        flex-direction: row;
-    }
-
-    .serviceItem{
-        text-align: center;
-        word-wrap: break-word;
-        word-break: break-all;
     }
 }
 

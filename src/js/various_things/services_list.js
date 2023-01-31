@@ -56,18 +56,19 @@ export const servicesList = [
         }
     }, 
 
-    {
-        name: "vultrl.com",
-        pricing: {
-            storage: 0.01,
-            transfer: 0.01
-        },
-        limits: {
-            minPay: 5,
-            maxPay: null
-        },
-        hddOrSsdOption: false,
-        singleOMultiOption: false,
-        discounts: null
-    },   
+     {
+         name: "vultrl.com",
+         pricing: {
+             storage: 0.01,
+             transfer: 0.01
+         },
+         limits: {
+             minPay: 5,
+             maxPay: null
+         },
+         hddOrSsdOption: false,
+         singleOMultiOption: false,
+         discounts: null
+     },   
+     
 ];
