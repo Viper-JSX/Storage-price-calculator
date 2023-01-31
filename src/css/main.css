@@ -31,9 +31,14 @@ body{
 }
 
 .form > div{
+    margin: 0 1rem 0 1rem;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+}
+
+.form > div > *{
+    margin: 0.5rem
 }
 
 #storageSizeInput, #transferSizeInput{
@@ -219,3 +224,11 @@ body{
         height: calc(100% * 0.8 * var(--size)); /*chart take only 8/10 of the width of container, the rest of space is for the price*/
     }
 }
+
+
+
+
+
+
+
+
