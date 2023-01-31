@@ -59,7 +59,6 @@ body{
     min-width: 320px;
     margin-top: 3rem;
     display: flex;
-    flex-wrap: wrap-reverse;
 }
 
 #chartServices, #chartColumns{ 
@@ -118,7 +117,34 @@ body{
 
 
 @media screen and (max-width: 400px) {
+    .App{
+        flex-direction: column-reverse;
+    }
 
+    .pricingChart{
+        flex-direction: column-reverse;
+    }
+
+    #chartColumns{
+        height: 60vh;
+        border-left: none;
+        border-bottom: 1rem solid black;
+        flex-direction: row;
+        align-items: flex-end;
+    }
+
+    .chartItem{
+        width: 2rem;
+        height: 100%;
+        align-items: flex-end;
+        flex-direction: column-reverse;
+    }
+
+    .chartColumn{
+        width: 100%;
+        height: calc(100% * 0.8 * var(--size));
+        background-color: pink;
+    }
 }
 
 
