@@ -60,7 +60,7 @@ body{
     width: 60vw;
     min-width: max-content;
     margin-top: 3rem;
-    background-color: blue;
+    /* background-color: blue; */
     display: flex;
     justify-content: center;
 }
@@ -79,6 +79,9 @@ body{
     height: 100%;
     border-bottom: var(--darkBorder);
     overflow: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .serviceItem fieldset{

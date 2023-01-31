@@ -94,6 +94,10 @@ function renderChartServices(){
             serviceItem.append(serviceNameAndOptions);
         }
 
+        const serviceIcon = document.createElement("img");
+        serviceIcon.src = serviceState.service.serviceIcon;
+        serviceIcon.alt = "biba";
+        serviceItem.append(serviceIcon);
         chartServices.append(serviceItem)
     });
 }
