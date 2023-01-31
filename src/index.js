@@ -3,7 +3,7 @@ import "./css/range_input.css";
 
 import { calculatePricing } from "./js/utilities/calculatePricing";
 import { servicesList } from "./js/various_things/services_list";
-import { HDD, MULTI, SINGLE, SSD } from "./js/various_things/word_constants";
+import { HDD, SINGLE } from "./js/various_things/word_constants";
 
 const storageSizeInput = document.getElementById("storageSizeInput");
 const transferSizeInput = document.getElementById("transferSizeInput");
