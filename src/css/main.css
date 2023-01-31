@@ -1,9 +1,10 @@
 :root{
     --lightColor: #EEEEEE;
     --darkColor: #111111;
-    --highlightColor: orangered;
+    --highlightColor: purple;
 
     --darkBorder: 2px solid black;
+    --thinDarkBorder: 1px solid black;
     --lightBorder: 2px solid white;
 }
 
@@ -20,6 +21,7 @@ body{
 .App{   
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .form{
@@ -56,8 +58,9 @@ body{
 
 .pricingChart{
     width: 60vw;
-    min-width: 320px;
+    min-width: max-content;
     margin-top: 3rem;
+    /* background-color: blue; */
     display: flex;
 }
 
@@ -75,9 +78,14 @@ body{
 .serviceItem fieldset{
     margin: 0;
     padding: 0;
+    font-size: 0.7rem;
     border: none;
     display: flex;
-    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.serviceName{
+    word-wrap: break-word;
 }
 
 #chartColumns{
@@ -85,17 +93,19 @@ body{
     min-width: 320px;
     min-width: 3;
     border-left: 0.5rem solid black;
-    background-color: blue;
+    /* background-color: blue; */
 }
 
 .chartItem{
     display: flex;
-    background-color: green;
+    /* background-color: green; */
 }
 
 .chartColumn{
     height: 20px;
-    background-color: pink;
+    background-color: gray;
+    border: var(--thinDarkBorder);
+
     animation-name: columnResize;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
@@ -104,7 +114,7 @@ body{
 }
 
 .chartColumn.minPrice{
-    background-color: black;
+    background-color: var(--highlightColor);
 }
 
 
@@ -113,22 +123,32 @@ body{
 
 
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 520px) {
     .App{
         align-items: center;
         flex-direction: column-reverse;
     }
 
+    .form{
+        margin-top: 2rem;
+    }
+
     .pricingChart{
+        align-items: center;
         flex-direction: column-reverse;
     }
 
     #chartColumns{
         height: 60vh;
+        min-height: 320px;
         border-left: none;
         border-bottom: 1rem solid black;
         flex-direction: row;
         align-items: flex-end;
+    }
+
+    .serviceItem{
+        font-size: 0.8rem;
     }
 
     .chartItem{
@@ -141,6 +161,16 @@ body{
     .chartColumn{
         width: 1rem !important;
         height: calc(100% * 0.8 * var(--size));
+    }
+
+    #chartServices{
+        flex-direction: row;
+    }
+
+    .serviceItem{
+        text-align: center;
+        word-wrap: break-word;
+        word-break: break-all;
     }
 }
 

@@ -53,7 +53,7 @@ function renderChartServices(){
         serviceItem.classList.add("serviceItem");
         serviceItem.addEventListener("change", (event) => handleStorageOptionChange({ event, serviceName: serviceState.service.name }));
         serviceItem.innerHTML = `
-            <b>${serviceState.service.name}</b>
+            <b class="serviceName">${serviceState.service.name.split(".")[0]}</b>
         `;
 
         if(serviceState.service.hddOrSsdOption || serviceState.service.singleOMultiOption){ //storage options
