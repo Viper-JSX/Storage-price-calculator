@@ -50,14 +50,18 @@ renderChartServices();
 function renderChartServices(){
     servicesStateList.forEach((serviceState, index) => {
         const serviceItem = document.createElement("div");
+
         serviceItem.classList.add("serviceItem");
         serviceItem.addEventListener("change", (event) => handleStorageOptionChange({ event, serviceName: serviceState.service.name }));
         serviceItem.innerHTML = `
-            <b class="serviceName">${serviceState.service.name.split(".")[0]}</b>
+            <div class="serviceNameAndOptions">
+                <b class="serviceName">${serviceState.service.name.split(".")[0]}</b>
+            </div>
         `;
 
         if(serviceState.service.hddOrSsdOption || serviceState.service.singleOMultiOption){ //storage options
             const avaliableOptions = Object.keys(serviceState.service.pricing.storage);
+            const serviceNameAndOptions = serviceItem.querySelector(".serviceNameAndOptions");
             const serviceStorageOptions = document.createElement("fieldset");
             serviceStorageOptions.name = `storageOptions_${index}`;
 
@@ -86,7 +90,8 @@ function renderChartServices(){
                 serviceStorageOptions.append(radioButtonAndLabelWrapper);
             })
 
-            serviceItem.append(serviceStorageOptions);
+            serviceNameAndOptions.append(serviceStorageOptions);
+            serviceItem.append(serviceNameAndOptions);
         }
 
         chartServices.append(serviceItem)
