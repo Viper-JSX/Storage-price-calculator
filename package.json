@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "start": "webpack-dev-server --open --mode development",
-    "build": "webpack-dev-server --mode production"
+    "build": "webpack --mode production"
   },
   "dependencies": {
     "@babel/core": "^7.20.12",
