@@ -60,8 +60,9 @@ body{
     width: 60vw;
     min-width: max-content;
     margin-top: 3rem;
-    /* background-color: blue; */
+    background-color: blue;
     display: flex;
+    justify-content: center;
 }
 
 #chartServices, #chartColumns{ 
