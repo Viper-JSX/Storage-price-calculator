@@ -19,8 +19,10 @@ body{
 
 
 .App{   
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 
@@ -93,6 +95,11 @@ body{
     flex-wrap: wrap;
 }
 
+.serviceIcon{
+    width: 1rem;
+    height: 1rem;
+}
+
 .serviceName{
     word-wrap: break-word;
 }
@@ -162,6 +169,13 @@ body{
         margin: 0;
         font-size: 0.8rem;
         text-align: center;
+        flex-direction: column-reverse;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .serviceItem fieldset{
+        justify-content: center;
     }
 
     #chartColumns{
