@@ -38,7 +38,6 @@ body{
 
 #storageSizeInput, #transferSizeInput{
     position: relative;
-    background-color: red;
 }
 
 #storageSizeInput::before, #transferSizeInput::before{
@@ -61,8 +60,8 @@ body{
 .pricingChart{
     width: 60vw;
     min-width: max-content;
+    min-height: 320px;
     margin-top: 3rem;
-    /* background-color: blue; */
     display: flex;
     justify-content: center;
 }
@@ -109,14 +108,12 @@ body{
     min-width: 320px;
     min-width: 3;
     border-left: 0.5rem solid black;
-    /* background-color: blue; */
 }
 
 .chartItem{
     height: 100%;
     align-items: center;
     display: flex;
-    background-color: green; 
 }
 
 .chartColumn{
@@ -152,6 +149,7 @@ body{
     }
 
     .pricingChart{
+        min-height: 480px;
         align-items: center;
         flex-direction: column-reverse;
     }
