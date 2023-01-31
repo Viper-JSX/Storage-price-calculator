@@ -90,11 +90,12 @@ body{
 
 .chartItem{
     display: flex;
+    background-color: green;
 }
 
 .chartColumn{
     height: 20px;
-    background-color: red;
+    background-color: pink;
     animation-name: columnResize;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
@@ -106,10 +107,6 @@ body{
     background-color: black;
 }
 
-.chartColumn::before{
-    content: "GG";
-}
-
 
 
 
@@ -118,6 +115,7 @@ body{
 
 @media screen and (max-width: 400px) {
     .App{
+        align-items: center;
         flex-direction: column-reverse;
     }
 
@@ -136,14 +134,13 @@ body{
     .chartItem{
         width: 2rem;
         height: 100%;
-        align-items: flex-end;
+        align-items: center;
         flex-direction: column-reverse;
     }
 
     .chartColumn{
-        width: 100%;
+        width: 1rem !important;
         height: calc(100% * 0.8 * var(--size));
-        background-color: pink;
     }
 }
 
