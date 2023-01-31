@@ -149,10 +149,6 @@ body{
         flex-direction: column-reverse;
     }
 
-    .form{
-        margin-top: 2rem;
-    }
-
     .pricingChart{
         min-height: 480px;
         align-items: center;
